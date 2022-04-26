@@ -24,6 +24,7 @@ class DepthCalculator {
         this.currentDepth++;
         if (this.currentDepth > this.maxDepth) {
             this.maxDepth = this.currentDepth;
+            console.log(this.maxDepth)
         }
         for (let i = 0; i < arr.length; i++) {
             if (arr[i] instanceof Array) {
@@ -42,6 +43,7 @@ class DepthCalculator {
             this.maxDepth = 0;
             this.currentDepth = 0;
         }
+        console.log(res)
         return res;
     }
 }

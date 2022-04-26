@@ -22,7 +22,6 @@ function sortByHeight(arr) {
 
     const arrNoMinusOne = arrInadexValue.filter(el => el.value !== -1).sort((a, b) => a.value - b.value)
 
-
     arrNimOne.forEach(function (el) {
         arrNoMinusOne.splice(el.index,0,el)
 

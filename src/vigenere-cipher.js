@@ -20,8 +20,8 @@ const {NotImplementedError} = require('../extensions/index.js');
  *
  */
 class VigenereCipheringMachine {
-    constructor(direction = true) {
-        this.direction = direction;
+    constructor(direct = true) {
+        this.direct = direct;
         this.alphabel = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     }
 
@@ -55,7 +55,7 @@ class VigenereCipheringMachine {
                 arr.push(corMessage[i]);
             }
         }
-        if (this.direction) {
+        if (this.direct) {
             return arr.join('');
         } else {
             return arr.reverse().join('');
@@ -74,13 +74,17 @@ class VigenereCipheringMachine {
             if (this.alphabel.indexOf(corMessage[i]) != -1) {
                 let newLetterIndex = (this.alphabel.indexOf(corMessage[i]) + 26 - this.alphabel.indexOf(newKey[i])) % 26;
                 arr.push(this.alphabel[newLetterIndex]);
+                console.log(arr)
             } else {
                 arr.push(corMessage[i]);
+                console.log(arr)
             }
         }
-        if (this.direction) {
+        if (this.direct) {
+            console.log(arr)
             return arr.join('');
         } else {
+            console.log(arr)
             return arr.reverse().join('');
         }
     }

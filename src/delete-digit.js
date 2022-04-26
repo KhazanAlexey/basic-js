@@ -20,6 +20,7 @@ function deleteDigit(n) {
 
 
         obj.push(   +[...arrN.slice(0, index), ...arrN.slice(index + 1)].join(''))
+        console.log(obj)
 
     })
 

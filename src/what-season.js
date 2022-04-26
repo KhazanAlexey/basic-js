@@ -17,12 +17,14 @@ function getSeason(date) {
     if ((date instanceof Date === false || Object.getOwnPropertyNames(date).length > 0) && arguments.length > 0) {
         throw new Error('Invalid date!');
     }
+    if (!(date instanceof Date)) {
+        throw new Error('Invalid date!')
+    }
     if (date instanceof Date && Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date) && Object.keys(date).length === 0) {
         let poraGoda
 
-        // executes, because `x` is technically a date object
         const month = date.getMonth()
-        if(month==0||month==1||month==11){
+        if(month==1||month==11||month==0){
             poraGoda= 'winter'
         }
         if (2 <= month && month <= 4) {
@@ -37,9 +39,7 @@ function getSeason(date) {
 
         return poraGoda
     }
-    if (!(date instanceof Date)) {
-        throw new Error('Invalid date!')
-    }
+
 
     function isValidDate(value) {
         var dateWrapper = new Date(value);

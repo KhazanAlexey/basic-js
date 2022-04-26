@@ -14,6 +14,7 @@ const {NotImplementedError} = require('../extensions/index.js');
  *
  */
 function transform(arr) {
+    console.log(arr)
     if (!Array.isArray(arr)) throw new Error("'arr' parameter must be an instance of the Array!");
     let newarr = arr.slice();
     for (let i = 0; i < newarr.length; i++) {
@@ -55,6 +56,7 @@ function transform(arr) {
             i--;
         }
     }
+    console.log(newarr)
     return newarr;
 }
 
