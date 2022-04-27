@@ -25,20 +25,41 @@ const {NotImplementedError} = require('../extensions/index.js');
  */
 function minesweeper(matrix) {
     console.log(matrix)
-    let result=0
-    for (let i = 1; i < matrix.length; i++) {
+    let result = matrix.map(el=>el.map(el2=>0))
 
-        // { C[ i ] = [];
-        //     for (var j = 0; j < n; j++) C[ i ][j] = A[ i ][j]+B[ i ][j];
-        // }
-        // resMatrix[i]=[];
+
+    for (let i = 0; i < matrix.length; i++) {
+
+        let mineCount = 0
+        const prevRow = matrix[i - 1];
+        const currentRow = matrix[i]
+        const nextRow = matrix[i + 1];
+
+
         for (let j = 0; j < matrix[i].length; j++) {
-            // matrix[i - 1][j] === 0 ? res = res + 0 : res = res + matrix[i][j]
-            result += i ? (matrix[i - 1][j] ? matrix[i][j] : 0) : matrix[i][j]
-            console.log(count)
+            if (prevRow) {
+                if (prevRow[j - 1]&&(prevRow[j - 1]===true)) mineCount++
+                if (prevRow[j]&&(prevRow[j]===true)) mineCount++
+                if (prevRow[j + 1]&&(prevRow[j + 1]===true)) mineCount++
+            }
+            if (currentRow) {
+                if (currentRow[j - 1]&&(currentRow[j - 1]===true)) mineCount++
+
+                if (currentRow[j + 1]&&(currentRow[j + 1]===true)) mineCount++
+            }
+            if (nextRow) {
+                if (nextRow[j - 1]&&(nextRow[j - 1]===true)) mineCount++
+                if (nextRow[j]&&(nextRow[j])===true) mineCount++
+                if (nextRow[j + 1]&&(nextRow[j + 1]===true)) mineCount++
+            }
+
+            result[i][j]=mineCount
+
+            mineCount=0
 
 
         }
+
     }
     console.log(result)
     return result
